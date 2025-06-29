@@ -203,6 +203,46 @@ body {
     line-height: 1.6;
 }
 
+/* Penambahan & penyempurnaan styling untuk About Section */
+
+/* Layout utama dua kolom di section about */
+.about .about-main {
+    align-items: center; /* Membuat gambar dan teks sejajar di tengah secara vertikal */
+    margin-bottom: 6rem; /* Memberi jarak ke section filosofi di bawahnya */
+}
+
+/* Kontainer untuk gambar utama */
+.about .about-main-img {
+    flex: 1 1 40%; /* Mengatur lebar gambar sekitar 40% dari baris */
+    padding-right: 2rem;
+}
+
+.about .about-main-img img {
+    width: 100%;
+    border-radius: 1rem; /* Membuat sudut gambar tumpul */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Memberi efek bayangan agar terangkat */
+}
+
+/* Kontainer untuk teks di sebelah gambar */
+.about .about-main-content {
+    flex: 1 1 60%; /* Mengatur lebar teks sekitar 60% dari baris */
+    padding-left: 2rem;
+}
+
+.about .about-main-content h3 {
+    font-family: 'Antonio', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.about .about-main-content p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
 /* Artikel/Blog (Menu) */
 .menu p {
     text-align: center;
