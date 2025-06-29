@@ -208,6 +208,94 @@ body {
     line-height: 1.6;
 }
 
+/* Penambahan & penyempurnaan styling untuk About Section */
+
+/* Style untuk paragraf pengantar di bawah judul utama */
+.about .about-intro {
+    text-align: center;
+    max-width: 70rem;
+    margin: 1rem auto 5rem auto; /* Memberi jarak lebih sebelum section berikutnya */
+    font-size: 1.4rem;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* Container untuk bagian Filosofi */
+.about .philosophy-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 6rem; /* Jarak ke section pendiri */
+}
+
+.about .philosophy-item {
+    background-color: #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+/* Styling untuk ikon dari Feather Icons */
+.about .philosophy-item i {
+    color: var(--primary);
+    width: 48px;  /* Ukuran ikon */
+    height: 48px;
+    margin-bottom: 1.5rem;
+}
+
+.about .philosophy-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about .philosophy-item p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* Styling untuk bagian Pendiri */
+.about .founder-section {
+    align-items: center; /* Membuat gambar dan teks sejajar secara vertikal */
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 1px solid #333; /* Garis pemisah */
+}
+
+.about .founder-img {
+    flex: 1 1 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about .founder-img img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%; /* Membuat gambar menjadi bulat */
+    object-fit: cover; /* Memastikan gambar tidak gepeng */
+    border: 3px solid var(--primary);
+}
+
+.about .founder-section .content {
+    flex: 1 1 45rem;
+}
+
+.about .founder-section .content .founder-story {
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.about .founder-section .content .founder-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: 2rem;
+}
+
 /* Artikel/Blog (Menu Section) Styling Update */
 .menu p,
 .contact p,
