@@ -1,6 +1,34 @@
-:root { 
+/* ---------------------------------------------------
+   MindMoney Website Stylesheet
+   Author: [Nama Anda]
+   Version: 1.0
+-----------------------------------------------------
+
+   TABLE OF CONTENTS
+   1.  Global Settings & Variables
+   2.  Typography & General Styles
+   3.  Reusable Components (Buttons, Rows)
+   4.  Layout: Navbar
+   5.  Layout: Footer
+   6.  Page Sections: Hero
+   7.  Page Sections: About
+   8.  Page Sections: Menu (Artikel)
+   9.  Page Sections: Contact
+   10. Page Sections: Testimonials (Jika ada)
+   11. Page Sections: Newsletter (Jika ada)
+   12. Media Queries (Responsive Design)
+
+--------------------------------------------------- */
+
+/* 1. Global Settings & Variables
+--------------------------------------------------- */
+:root {
     --primary: #ead730;
     --bg: #010101;
+    --dark-grey: #1a1a1a;
+    --light-grey: #ccc;
+    --white: #fff;
+    --black: #1E1E1E;
 }
 
 * {
@@ -17,19 +45,76 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Mengganti font utama agar lebih modern/GenZ */
+    font-family: 'Poppins', sans-serif;
     background-color: var(--bg);
-    color: #fff;
+    color: var(--white);
+    overflow-x: hidden; /* Mencegah horizontal scroll */
 }
 
-/* Navbar */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 2. Typography & General Styles
+--------------------------------------------------- */
+/* Judul utama untuk setiap section */
+.section-title {
+    text-align: center;
+    font-family: 'Antonio', sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-title span {
+    color: var(--primary);
+}
+
+/* Sub-paragraf di bawah judul utama */
+.section-subtitle {
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto 4rem auto;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* 3. Reusable Components
+--------------------------------------------------- */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: var(--primary);
+    color: var(--black);
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 700;
+    box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+}
+
+.cta-button:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.content-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* 4. Layout: Navbar
+--------------------------------------------------- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.4rem 7%;
-    background-color: rgba(1, 1, 1, 0.8);
-    border-bottom: 1px solid #525252;
+    background-color: rgba(1, 1, 1, 0.85);
+    backdrop-filter: blur(5px); /* Efek glassmorphism modern */
+    border-bottom: 1px solid #333;
     position: fixed;
     top: 0;
     left: 0;
@@ -37,48 +122,55 @@ body {
     z-index: 9999;
 }
 
-.navbar .navbar-logo {
-    font-family: 'Antonio', sans-serif; /* Font Antonio untuk logo agar khas */
+.navbar-logo {
+    font-family: 'Antonio', sans-serif;
     font-size: 2rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
     font-style: italic;
 }
 
-.navbar .navbar-logo span {
+.navbar-logo span {
     color: var(--primary);
 }
 
-.navbar .navbar-nav a {
-    color: #ffffff;
+.navbar-nav a {
+    color: var(--white);
     display: inline-block;
-    font-size: 1.2rem; /* Sedikit diperbesar */
+    font-size: 1.2rem;
     margin: 0 1rem;
+    position: relative;
 }
 
-.navbar .navbar-nav a:hover {
-    color: var(--primary);
-}
-
-.navbar .navbar-nav a::after {
+.navbar-nav a::after {
     content: "";
     display: block;
-    padding-bottom: 0.5rem;
-    border-bottom: 0.1rem solid var(--primary);
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
     transform: scaleX(0);
-    transition: 0.2s linear;
+    transform-origin: center;
+    transition: transform 0.3s ease;
 }
 
-.navbar .navbar-nav a:hover::after {
-    transform: scaleX(0.5);
+.navbar-nav a:hover {
+    color: var(--primary);
 }
 
-.navbar .navbar-extra a {
-    color: #fff;
+.navbar-nav a:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar-extra a {
+    color: var(--white);
     margin: 0 0.5rem;
+    transition: color 0.3s;
 }
 
-.navbar .navbar-extra a:hover {
+.navbar-extra a:hover {
     color: var(--primary);
 }
 
@@ -86,39 +178,97 @@ body {
     display: none;
 }
 
-/* Hero Section */
+
+/* 5. Layout: Footer
+--------------------------------------------------- */
+footer {
+    background-color: var(--primary);
+    color: var(--black);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 5rem;
+}
+
+footer .socials a {
+    color: var(--black);
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+footer .links {
+    margin: 1.5rem 0;
+}
+
+footer .links a {
+    color: var(--black);
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+footer .socials a:hover,
+footer .links a:hover {
+    color: var(--bg);
+}
+
+footer .credits {
+    font-size: 0.9rem;
+}
+
+footer .credits a {
+    font-weight: 700;
+    color: var(--black);
+}
+
+
+/* 6. Page Sections: Hero
+--------------------------------------------------- */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-image: url('goldenmoney.jpg');
+    padding: 1.4rem 7%;
+    background-image: url('goldenmoney.jpg'); /* Ganti dengan gambar yang benar */
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     position: relative;
 }
 
+/* Overlay gelap di atas background */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Gradient dari bawah agar teks lebih terbaca */
 .hero::after {
     content: "";
-    display: block;
     position: absolute;
-    width: 100%;
-    height: 30%;
     bottom: 0;
-    background: linear-gradient(0deg, rgba(1, 1, 1, 1) 8%, rgba(255, 255, 255, 0) 50%);
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(0deg, var(--bg) 20%, transparent 100%);
 }
 
 .hero .content {
-    padding: 1.4rem 7%;
+    position: relative;
+    z-index: 2;
     max-width: 60rem;
 }
 
 .hero .content h1 {
     font-family: 'Antonio', sans-serif;
-    font-size: 5em;
-    color: #fff;
-    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
-    line-height: 1.2;
+    font-size: 5rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
 }
 
 .hero .content h1 span {
@@ -128,425 +278,170 @@ body {
 .hero .content p {
     font-size: 1.4rem;
     margin-top: 1rem;
-    line-height: 1.4;
-    font-weight: 300; /* Dibuat lebih tipis agar elegan */
+    line-height: 1.5;
+    font-weight: 300;
 }
 
-.hero .content .cta {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 1rem 3rem;
-    background-color: var(--primary);
-    color: #111; /* Warna text lebih kontras */
-    font-size: 1.4rem;
-    border-radius: 0.5rem;
-    transition: 0.3s;
-    box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
-    font-weight: 700;
-}
-
-.hero .content .cta:hover {
-    background-color: #fff;
+.hero .content .cta-button {
+    margin-top: 2rem;
 }
 
 
-/* About Section */
-.about, 
-.menu, 
-.contact, 
-.testimonials, 
-.newsletter { /* Menambahkan section baru ke grup padding */
-    padding: 8rem 7% 1.4rem;
+/* 7. Page Sections: About
+--------------------------------------------------- */
+.about, .menu, .contact, .testimonials, .newsletter {
+    padding: 8rem 7% 4rem; /* Padding atas lebih besar */
 }
 
-.about h2, 
-.menu h2, 
-.contact h2, 
-.testimonials h2,
-.newsletter h2 { /* Menambahkan section baru ke grup judul */
-    text-align: center;
-    font-family: 'Antonio', sans-serif;
-    font-size: 2.6rem;
-    margin-bottom: 1rem; /* Jarak bawah judul */
-}
-
-.about h2 span, 
-.menu h2 span, 
-.contact h2 span,
-.testimonials h2 span { /* Menambahkan section baru ke grup span judul */
-    color: var(--primary);
-}
-
-.about .row {
-    display: flex;
-    flex-wrap: wrap; /* Agar responsif */
-}
-
-.about .row .about-img {
+.about .content-row .about-img {
     flex: 1 1 45rem;
 }
 
-.about .row .about-img img {
-    width: 100%;
-    border-radius: 1rem; /* Tambah radius biar lebih modern */
+.about .content-row .about-img img {
+    border-radius: 1rem;
 }
 
-.about .row .content {
+.about .content-row .content {
     flex: 1 1 35rem;
-    padding: 0 1rem;
+    padding-left: 2rem;
 }
 
-.about .row .content h3 {
+.about .content-row .content h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
 }
 
-.about .row .content p {
-    margin-bottom: 0.8rem;
+.about .content-row .content p {
     font-size: 1.3rem;
     font-weight: 300;
     line-height: 1.6;
-}
-
-/* Penambahan & penyempurnaan styling untuk About Section */
-
-/* Style untuk paragraf pengantar di bawah judul utama */
-.about .about-intro {
-    text-align: center;
-    max-width: 70rem;
-    margin: 1rem auto 5rem auto; /* Memberi jarak lebih sebelum section berikutnya */
-    font-size: 1.4rem;
-    line-height: 1.7;
-    font-weight: 300;
-}
-
-/* Container untuk bagian Filosofi */
-.about .philosophy-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-bottom: 6rem; /* Jarak ke section pendiri */
-}
-
-.about .philosophy-item {
-    background-color: #1a1a1a;
-    border-radius: 0.5rem;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    border: 1px solid #333;
-}
-
-/* Styling untuk ikon dari Feather Icons */
-.about .philosophy-item i {
-    color: var(--primary);
-    width: 48px;  /* Ukuran ikon */
-    height: 48px;
-    margin-bottom: 1.5rem;
-}
-
-.about .philosophy-item h4 {
-    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
-.about .philosophy-item p {
-    font-size: 1.1rem;
-    font-weight: 300;
-    line-height: 1.6;
-}
 
-/* Styling untuk bagian Pendiri */
-.about .founder-section {
-    align-items: center; /* Membuat gambar dan teks sejajar secara vertikal */
-    margin-top: 4rem;
-    padding-top: 4rem;
-    border-top: 1px solid #333; /* Garis pemisah */
-}
-
-.about .founder-img {
-    flex: 1 1 30rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.about .founder-img img {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%; /* Membuat gambar menjadi bulat */
-    object-fit: cover; /* Memastikan gambar tidak gepeng */
-    border: 3px solid var(--primary);
-}
-
-.about .founder-section .content {
-    flex: 1 1 45rem;
-}
-
-.about .founder-section .content .founder-story {
-    font-size: 1.3rem;
-    font-style: italic;
-    line-height: 1.7;
-    font-weight: 300;
-}
-
-.about .founder-section .content .founder-name {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--primary);
-    margin-top: 2rem;
-}
-
-/* Artikel/Blog (Menu Section) Styling Update */
-.menu p,
-.contact p,
-.newsletter p {
-    text-align: center;
-    max-width: 40rem;
-    margin: auto;
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
+/* 8. Page Sections: Menu (Artikel)
+--------------------------------------------------- */
 .menu .row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-top: 4rem;
 }
 
-.menu .menu-card {
-    background-color: #1a1a1a;
-    border-radius: 0.5rem;
+.menu-card {
+    background-color: var(--dark-grey);
+    border-radius: 1rem;
+    overflow: hidden;
     text-align: center;
-    padding-bottom: 2rem;
-    overflow: hidden; /* Agar gambar tidak keluar dari radius */
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.menu .menu-card:hover {
-    transform: scale(1.05);
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-.menu .menu-card-img {
+.menu-card-img {
     width: 100%;
     height: 20rem;
     object-fit: cover;
 }
 
-.menu .menu-card-title {
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin: 1.5rem 1rem 0.5rem 1rem;
+.menu-card .card-content {
+    padding: 1.5rem;
 }
 
-.menu .menu-card-category {
+.menu-card-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.menu-card-category {
     font-size: 1rem;
-    font-weight: 300;
-    color: var(--primary);
+    color: var(--light-grey);
 }
 
-.menu .cta-menu {
-    display: block;
-    width: fit-content;
-    margin: 3rem auto 0 auto;
-    padding: 1rem 3rem;
-    background-color: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-    font-size: 1.2rem;
-    border-radius: 0.5rem;
-    transition: 0.3s;
-    font-weight: 600;
-}
 
-.menu .cta-menu:hover {
-    background-color: var(--primary);
-    color: #111;
-}
-
-/* Testimonials Section Styling (BARU) */
-.testimonials .row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 4rem;
-}
-
-.testimonials .testimonial-card {
-    background-color: #1a1a1a;
+/* 9. Page Sections: Contact
+--------------------------------------------------- */
+.contact .content-row {
+    background-color: var(--dark-grey);
     padding: 2rem;
+    border-radius: 1rem;
+}
+
+.contact .map {
+    flex: 1 1 50%;
     border-radius: 0.5rem;
-    text-align: center;
-    flex-basis: 400px;
 }
 
-.testimonials .testimonial-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1.5rem;
-    border: 2px solid var(--primary);
+.contact form {
+    flex: 1 1 45%;
+    padding: 0 1rem;
 }
 
-.testimonials .testimonial-quote {
-    font-size: 1.1rem;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.testimonials .testimonial-name {
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.testimonials .testimonial-role {
-    font-size: 1rem;
-    color: #aaa;
-}
-
-/* Newsletter Section Styling (BARU) */
-.newsletter {
-    background-color: #1a1a1a;
-}
-
-.newsletter .newsletter-form {
+.contact .input-group {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap; /* responsif */
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    transition: border-color 0.3s;
 }
 
-.newsletter .newsletter-form input {
+.contact .input-group:focus-within {
+    border-color: var(--primary);
+}
+
+.contact .input-group i {
+    color: var(--primary);
+}
+
+.contact .input-group input {
+    flex: 1;
     padding: 1.2rem;
     font-size: 1.1rem;
-    background-color: #333;
-    border-radius: 0.5rem;
-    color: #fff;
-    width: 400px;
-    max-width: 80%;
-}
-
-.newsletter .newsletter-form .cta {
-    margin-top: 0;
-}
-
-/* Contact Section */
-.contact .row {
-    display: flex;
-    margin-top: 2rem;
-    background-color: #1a1a1a;
-}
-
-.contact .row .map {
-    flex: 1 1 45rem;
-    width: 100%;
-    object-fit: cover;
-}
-
-.contact .row form {
-    flex: 1 1 45rem;
-    padding: 5rem 2rem;
-    text-align: center;
-}
-
-.contact .row .input-group {
-    display: flex;
-    align-items: center;
-    margin-top: 2rem;
-    background-color: var(--bg);
-    border: 1px solid #eee;
-    padding-left: 2rem;
-}
-
-.contact .row .input-group input {
-    width: 100%;
-    padding: 2rem;
-    font-size: 1.7rem;
+    color: var(--white);
     background: none;
-    color: #fff;
 }
 
-.contact .row .btn {
-    margin-top: 3rem;
-    display: inline-block;
-    padding: 1rem 3rem;
-    font-size: 1.7rem;
-    color: #fff;
-    background-color: var(--primary);
-    cursor: pointer;
-}
 
-/* Footer */
-footer {
-    background-color: var(--primary);
-    text-align: center;
-    padding: 1rem 0 3rem;
-    margin-top: 3rem;
-}
-
-footer .socials {
-    padding: 1rem 0;
-}
-
-footer .socials a {
-    color: var(--bg);
-    margin: 1rem;
-}
-
-footer .socials a:hover,
-footer .links a:hover {
-    color: #fff;
-}
-
-footer .links {
-    margin-bottom: 1.4rem;
-}
-
-footer .links a {
-    color: var(--bg);
-    padding: 0.7rem 1rem;
-}
-
-footer .credits {
-    font-size: 0.8rem;
-}
-
-footer .credits a {
-    color: var(--bg);
-    font-weight: 700;
-}
-
-/* Media Queries */
-/* (Kode media queries Anda yang sudah ada bisa diletakkan di sini) */
+/* 12. Media Queries
+--------------------------------------------------- */
 
 /* Laptop */
 @media (max-width: 1366px) {
     html {
-        font-size: 75%;
+        font-size: 85%;
     }
 }
 
 /* Tablet */
 @media (max-width: 768px) {
+    html {
+        font-size: 75%;
+    }
+    
     #hamburger-menu {
         display: inline-block;
     }
 
     .navbar .navbar-nav {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         right: -100%;
-        background-color: #fff;
-        width: 30rem;
+        background-color: var(--dark-grey);
+        width: 60%;
+        max-width: 30rem;
         height: 100vh;
-        transition: 0.3s;
+        transition: right 0.4s ease-in-out;
+        padding-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .navbar .navbar-nav.active {
@@ -554,64 +449,22 @@ footer .credits a {
     }
 
     .navbar .navbar-nav a {
-        color: var(--bg);
-        display: block;
-        margin: 1.5rem;
-        padding: 0.5rem;
-        font-size: 2rem;
+        color: var(--white);
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
     }
 
-    .navbar .navbar-nav a::after {
-        transform-origin: 0 0;
-    }
-    
-    .navbar .navbar-nav a:hover::after {
-        transform: scaleX(0.2);
-    }
-
-    .about .row {
-        flex-wrap: wrap;
-    }
-
-    .about .row .about-img img {
-        height: 24rem;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .about .row .content {
-        padding: 0;
-    }
-
-    .about .row .content h3 {
-        margin-top: 1rem;
-        font-size: 2rem;
-    }
-
-    .about .row .content p{
-        font-size: 1.6rem;
-    }
-
-    .menu p{
-        font-size: 1.2rem;
-    }
-
-    .contact .row {
-        flex-wrap: wrap;
-    }
-
-    .contact .row .map {
-        height: 30rem;
-    }
-
-    .contact .row form {
-        padding-top: 0;
+    .about .content-row .content {
+        padding: 2rem 0 0 0;
     }
 }
 
 /* Mobile Phone */
-@media (max-width: 450px) {
+@media (max-width: 480px) {
     html {
-        font-size: 55%;
+        font-size: 65%;
+    }
+    .hero .content h1 {
+        font-size: 4rem;
     }
 }
